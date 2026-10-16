@@ -2,19 +2,9 @@
 
 A plain HTML/CSS/JS site with no build step. GitHub Pages hosts it for free.
 
-## 1. Put in your details
+## 1. Edit the text
 
-Open `script.js` and edit the `SITE` block at the top:
-
-```js
-const SITE = {
-  name:      "YourName",
-  discord:   "yourdiscord",
-  roblox:    "https://www.roblox.com/users/YOUR_USER_ID/profile",
-};
-```
-
-The name, Discord and links update across the whole site. Everything else (project text, the Hire me list) is in `index.html`.
+All the text (name, Discord, Roblox link, about, commissions) is in `index.html`. Colors and layout are in `style.css`.
 
 ## 2. Add your clips
 

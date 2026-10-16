@@ -3,73 +3,51 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Roblox Scripter</title>
-  <meta name="description" content="Roblox scripter for hire. Combat, AI, saving and networking.">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <title>semintaly</title>
+  <meta name="description" content="semintaly, Roblox scripter. Combat, NPC AI, saving and networking.">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<header class="wrap top">
-  <a href="#" class="name" data-site="name">YourName</a>
-  <nav>
-    <a href="#work">Work</a>
-    <a href="#hire">Hire me</a>
-  </nav>
-</header>
+<main>
 
-<main class="wrap">
+  <h1>semintaly</h1>
+  <p class="sub">roblox scripter · commissions open</p>
 
-  <section class="intro">
-    <h1>Roblox scripter</h1>
-    <p>I make combat, AI, saving and networking systems. Open for commissions.</p>
-    <div class="buttons">
-      <button class="btn" data-copy-discord>Discord: <span data-site="discord">yourdiscord</span></button>
-      <a class="btn btn-alt" data-site-href="roblox" href="#" target="_blank" rel="noopener">Roblox profile</a>
-    </div>
-  </section>
+  <p>Hi, I'm semintaly. I script on Roblox, mostly combat, NPC AI, data saving and networking.</p>
+  <p>Everything below is from <b>Coperhead</b>, an SCP roleplay/combat game I'm working on. All of it is scripted by me.</p>
 
-  <section id="work">
-    <h2>Work</h2>
-    <p class="muted">All from my game Coperhead, an SCP roleplay and combat game.</p>
+  <h2>Stuff I've made</h2>
 
-    <div class="grid">
-      <article class="item">
-        <div class="clip" data-clip="assets/clips/scp173.mp4" data-label="SCP-173"></div>
-        <h3>SCP-173 AI</h3>
-      </article>
+  <div class="clips">
+    <figure>
+      <div class="clip" data-clip="assets/clips/scp173.mp4"></div>
+      <figcaption>SCP-173</figcaption>
+    </figure>
+    <figure>
+      <div class="clip" data-clip="assets/clips/guns.mp4"></div>
+      <figcaption>Guns</figcaption>
+    </figure>
+    <figure>
+      <div class="clip" data-clip="assets/clips/scp018.mp4"></div>
+      <figcaption>SCP-018</figcaption>
+    </figure>
+    <figure>
+      <div class="clip" data-clip="assets/clips/vehicles.mp4"></div>
+      <figcaption>Vehicles</figcaption>
+    </figure>
+    <figure>
+      <div class="clip" data-clip="assets/clips/scp999.mp4"></div>
+      <figcaption>SCP-999</figcaption>
+    </figure>
+    <figure>
+      <div class="clip" data-clip="assets/clips/armory.mp4"></div>
+      <figcaption>Armory + saving</figcaption>
+    </figure>
+  </div>
 
-      <article class="item">
-        <div class="clip" data-clip="assets/clips/guns.mp4" data-label="Guns"></div>
-        <h3>Gun system</h3>
-      </article>
-
-      <article class="item">
-        <div class="clip" data-clip="assets/clips/scp018.mp4" data-label="SCP-018"></div>
-        <h3>SCP-018 ball</h3>
-      </article>
-
-      <article class="item">
-        <div class="clip" data-clip="assets/clips/vehicles.mp4" data-label="Vehicles"></div>
-        <h3>Vehicles</h3>
-      </article>
-
-      <article class="item">
-        <div class="clip" data-clip="assets/clips/scp999.mp4" data-label="SCP-999"></div>
-        <h3>SCP-999 slime</h3>
-      </article>
-
-      <article class="item">
-        <div class="clip" data-clip="assets/clips/armory.mp4" data-label="Armory"></div>
-        <h3>Armory and saving</h3>
-      </article>
-    </div>
-  </section>
-
-  <section>
-    <h2>Code sample</h2>
+  <h2>Some code</h2>
+  <p>The server side of my gun's shoot remote.</p>
 <pre><code>Net.Event("Shoot").OnServerEvent:Connect(function(player, hitPart, muzzlePos, endPos, toolName)
 	local settings = GunSettings.Guns[toolName]
 	local character = player.Character
@@ -91,24 +69,20 @@
 
 	GunService.Shoot(player, hitPart, muzzlePos, endPos, toolName)
 end)</code></pre>
-  </section>
 
-  <section id="hire">
-    <h2>Hire me</h2>
-    <ul class="list">
-      <li><b>Bug fixes</b><span>Small fixes, usually done in a day or two</span></li>
-      <li><b>Systems</b><span>Combat, inventory, rounds, NPCs, shops, saving</span></li>
-      <li><b>Long-term</b><span>Ongoing scripting, paid per milestone</span></li>
-    </ul>
-    <p class="muted">Payment: 50% before, 50% after. Message me on Discord with what you need and your deadline.</p>
-    <div class="buttons">
-      <button class="btn" data-copy-discord>Discord: <span data-site="discord">yourdiscord</span></button>
-    </div>
-  </section>
+  <h2>Commissions</h2>
+  <p>I take bug fixes, full systems (combat, inventory, rounds, NPCs, shops, saving) and longer term work.</p>
+  <p>I usually do 50% upfront and the rest when it's done. DM me on Discord with what you need and when you need it by.</p>
+
+  <h2>Contact</h2>
+  <p>
+    Discord: <b>semintaly</b><br>
+    Roblox: <a href="https://www.roblox.com/users/1808879631/profile" target="_blank" rel="noopener">profile</a>
+  </p>
 
 </main>
 
-<footer class="wrap muted">© <span data-year></span> <span data-site="name">YourName</span></footer>
+<footer>last updated october 2026</footer>
 
 <script src="script.js"></script>
 </body>
