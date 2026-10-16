@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Roblox Scripter</title>
+  <meta name="description" content="Roblox scripter for hire. Combat, AI, saving and networking.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="wrap top">
+  <a href="#" class="name" data-site="name">YourName</a>
+  <nav>
+    <a href="#work">Work</a>
+    <a href="#hire">Hire me</a>
+  </nav>
+</header>
+
+<main class="wrap">
+
+  <section class="intro">
+    <h1>Roblox scripter</h1>
+    <p>I make combat, AI, saving and networking systems. Open for commissions.</p>
+    <div class="buttons">
+      <button class="btn" data-copy-discord>Discord: <span data-site="discord">yourdiscord</span></button>
+      <a class="btn btn-alt" data-site-href="roblox" href="#" target="_blank" rel="noopener">Roblox profile</a>
+    </div>
+  </section>
+
+  <section id="work">
+    <h2>Work</h2>
+    <p class="muted">All from my game Coperhead, an SCP roleplay and combat game.</p>
+
+    <div class="grid">
+      <article class="item">
+        <div class="clip" data-clip="assets/clips/scp173.mp4" data-label="SCP-173"></div>
+        <h3>SCP-173 AI</h3>
+        <p>Chases players and only moves when nobody is looking. Pathfinding, door smashing, smooth movement on every client.</p>
+      </article>
+
+      <article class="item">
+        <div class="clip" data-clip="assets/clips/guns.mp4" data-label="Guns"></div>
+        <h3>Gun system</h3>
+        <p>10 guns with recoil, aiming and armor. Hits register instantly for the shooter, then the server checks fire rate, ammo, range and walls so exploiters can't fake them.</p>
+      </article>
+
+      <article class="item">
+        <div class="clip" data-clip="assets/clips/scp018.mp4" data-label="SCP-018"></div>
+        <h3>SCP-018 ball</h3>
+        <p>A bouncing ball that gets faster with every hit. Runs the same on all clients with almost no network traffic.</p>
+      </article>
+
+      <article class="item">
+        <div class="clip" data-clip="assets/clips/vehicles.mp4" data-label="Vehicles"></div>
+        <h3>Vehicles</h3>
+        <p>Drivable cars with a working turret. Instant steering for the driver, server checks for speed hacks.</p>
+      </article>
+
+      <article class="item">
+        <div class="clip" data-clip="assets/clips/scp999.mp4" data-label="SCP-999"></div>
+        <h3>SCP-999 slime</h3>
+        <p>A jelly creature that roams, squishes when stood on, eats candy and tickles players into a ragdoll.</p>
+      </article>
+
+      <article class="item">
+        <div class="clip" data-clip="assets/clips/armory.mp4" data-label="Armory"></div>
+        <h3>Armory and saving</h3>
+        <p>Gear shop with rank locks and a loadout per team. Data saves on leave, on purchase and every minute.</p>
+      </article>
+    </div>
+  </section>
+
+  <section>
+    <h2>Code sample</h2>
+<pre><code>Net.Event("Shoot").OnServerEvent:Connect(function(player, hitPart, muzzlePos, endPos, toolName)
+	local settings = GunSettings.Guns[toolName]
+	local character = player.Character
+	local root = character and character:FindFirstChild("HumanoidRootPart")
+	local tool = character and character:FindFirstChild(toolName)
+	if not settings or not root or not tool then return end
+	if not allowShot(player, settings.FireRate) then return end
+
+	local reach = MUZZLE_REACH + root.AssemblyLinearVelocity.Magnitude * LAG_TIME
+	if (muzzlePos - root.Position).Magnitude > reach then return end
+	if (endPos - muzzlePos).Magnitude > settings.Range + RANGE_SLACK then return end
+
+	if hitPart then
+		local slack = hitPart.Size.Magnitude / 2 + HIT_SLACK + hitPart.AssemblyLinearVelocity.Magnitude * LAG_TIME
+		if distanceToSegment(hitPart.Position, muzzlePos, endPos) > slack then
+			hitPart = nil
+		end
+	end
+
+	GunService.Shoot(player, hitPart, muzzlePos, endPos, toolName)
+end)</code></pre>
+  </section>
+
+  <section id="hire">
+    <h2>Hire me</h2>
+    <ul class="list">
+      <li><b>Bug fixes</b><span>Small fixes, usually done in a day or two</span></li>
+      <li><b>Systems</b><span>Combat, inventory, rounds, NPCs, shops, saving</span></li>
+      <li><b>Long-term</b><span>Ongoing scripting, paid per milestone</span></li>
+    </ul>
+    <p class="muted">Payment: 50% before, 50% after. Message me on Discord with what you need and your deadline.</p>
+    <div class="buttons">
+      <button class="btn" data-copy-discord>Discord: <span data-site="discord">yourdiscord</span></button>
+      <a class="btn btn-alt" data-site-href="talentHub" href="#" target="_blank" rel="noopener">Talent Hub</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap muted">© <span data-year></span> <span data-site="name">YourName</span></footer>
+
+<script src="script.js"></script>
+</body>
+</html>
