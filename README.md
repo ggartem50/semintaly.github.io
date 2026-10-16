@@ -11,7 +11,6 @@ const SITE = {
   name:      "YourName",
   discord:   "yourdiscord",
   roblox:    "https://www.roblox.com/users/YOUR_USER_ID/profile",
-  talentHub: "https://create.roblox.com/talent",
 };
 ```
 

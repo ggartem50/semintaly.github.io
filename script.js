@@ -3,7 +3,6 @@ const SITE = {
   name:      "semintaly",
   discord:   "semintaly",
   roblox:    "https://www.roblox.com/users/1808879631/profile",
-  talentHub: "https://create.roblox.com/talent",
 };
 
 document.querySelectorAll("[data-site]").forEach(el => el.textContent = SITE[el.dataset.site]);
