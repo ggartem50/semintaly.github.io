@@ -5,7 +5,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>semintaly</title>
   <meta name="description" content="semintaly, Roblox scripter. Combat, NPC AI, saving and networking.">
-  <link rel="stylesheet" href="style.css?v=4">
+  <meta name="theme-color" content="#7ee08a">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="semintaly">
+  <meta property="og:title" content="semintaly · roblox scripter">
+  <meta property="og:description" content="Combat, NPC AI, saving and networking. Commissions open, DM semintaly on Discord.">
+  <meta property="og:url" content="https://ggartem50.github.io/semintaly.github.io/">
+  <meta property="og:image" content="https://ggartem50.github.io/semintaly.github.io/assets/preview.jpg">
+  <meta property="og:image:width" content="426">
+  <meta property="og:image:height" content="240">
+  <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
 
@@ -53,7 +62,17 @@
 
   <h2>Some code</h2>
   <p>The server side of my gun's shoot remote.</p>
-<pre><code>Net.Event("Shoot").OnServerEvent:Connect(function(player, hitPart, muzzlePos, endPos, toolName)
+<pre><code>local function isFiniteVector(v)
+	return typeof(v) == "Vector3" and v.Magnitude == v.Magnitude and v.Magnitude ~= math.huge
+end
+
+Net.Event("Shoot").OnServerEvent:Connect(function(player, hitPart, muzzlePos, endPos, toolName)
+	if typeof(toolName) ~= "string" then return end
+	if not isFiniteVector(muzzlePos) or not isFiniteVector(endPos) then return end
+	if hitPart and not (typeof(hitPart) == "Instance" and hitPart:IsA("BasePart")) then
+		return
+	end
+
 	local settings = GunSettings.Guns[toolName]
 	local character = player.Character
 	local root = character and character:FindFirstChild("HumanoidRootPart")
@@ -66,7 +85,8 @@
 	if (endPos - muzzlePos).Magnitude > settings.Range + RANGE_SLACK then return end
 
 	if hitPart then
-		local slack = hitPart.Size.Magnitude / 2 + HIT_SLACK + hitPart.AssemblyLinearVelocity.Magnitude * LAG_TIME
+		local drift = hitPart.AssemblyLinearVelocity.Magnitude * LAG_TIME
+		local slack = hitPart.Size.Magnitude / 2 + HIT_SLACK + drift
 		if distanceToSegment(hitPart.Position, muzzlePos, endPos) > slack then
 			hitPart = nil
 		end
@@ -89,6 +109,6 @@ end)</code></pre>
 
 <footer>last updated october 2026</footer>
 
-<script src="script.js?v=3"></script>
+<script src="script.js?v=4"></script>
 </body>
 </html>

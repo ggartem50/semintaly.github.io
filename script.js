@@ -1,8 +1,21 @@
+const viewer = document.createElement("dialog");
+const big = document.createElement("video");
+Object.assign(big, { muted: true, loop: true, autoplay: true, playsInline: true, controls: true });
+viewer.className = "viewer";
+viewer.appendChild(big);
+document.body.appendChild(viewer);
+viewer.addEventListener("click", e => { if (e.target === viewer) viewer.close(); });
+viewer.addEventListener("close", () => big.removeAttribute("src"));
+
 document.querySelectorAll(".clip").forEach(slot => {
   const video = document.createElement("video");
   Object.assign(video, { muted: true, loop: true, autoplay: true, playsInline: true });
   video.addEventListener("error", () => {
     slot.innerHTML = `<div class="clip-empty">clip coming soon</div>`;
+  });
+  video.addEventListener("click", () => {
+    big.src = video.src;
+    viewer.showModal();
   });
   video.src = slot.dataset.clip;
   slot.appendChild(video);
